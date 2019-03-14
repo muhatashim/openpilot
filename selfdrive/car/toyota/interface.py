@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from common.realtime import sec_since_boot
-from cereal import car, log
+from cereal import car
 from selfdrive.config import Conversions as CV
 from selfdrive.controls.lib.drive_helpers import EventTypes as ET, create_event
 from selfdrive.controls.lib.vehicle_model import VehicleModel
@@ -199,6 +199,7 @@ class CarInterface(object):
     ret.longitudinalKpBP = [0., 5., 35.]
     ret.longitudinalKiBP = [0., 35.]
     ret.stoppingControl = False
+    ret.startAccel = 0.0
 
     if ret.enableGasInterceptor:
       ret.gasMaxBP = [0., 9., 35]
@@ -363,7 +364,7 @@ class CarInterface(object):
 
   # pass in a car.CarControl
   # to be called @ 100hz
-  def apply(self, c, perception_state=log.Live20Data.new_message()):
+  def apply(self, c):
 
     self.CC.update(self.sendcan, c.enabled, self.CS, self.frame,
                    c.actuators, c.cruiseControl.cancel, c.hudControl.visualAlert,
