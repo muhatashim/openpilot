@@ -167,4 +167,4 @@ DBC = {
   CAR.OLD_CAR: dbc_dict('toyota_corolla_2017_pt_generated', 'toyota_prius_2017_adas'),
 }
 
-NO_DSU_CAR = [CAR.CHR, CAR.CHRH, CAR.CAMRY, CAR.CAMRYH,CAR.OLD_CAR]
+NO_DSU_CAR = [CAR.CHR, CAR.CHRH, CAR.CAMRY, CAR.CAMRYH, CAR.OLD_CAR]
