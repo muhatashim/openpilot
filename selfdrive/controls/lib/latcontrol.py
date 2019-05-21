@@ -43,4 +43,4 @@ class LatControl(object):
                                      feedforward=steer_feedforward, speed=v_ego, deadzone=deadzone)
 
     self.sat_flag = self.pid.saturated
-return output_steer, float(self.angle_steers_des)
+    return output_steer, float(self.angle_steers_des)
