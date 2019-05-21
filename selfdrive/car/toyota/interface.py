@@ -86,7 +86,7 @@ class CarInterface(object):
       ret.steerKpV, ret.steerKiV = [[0.4], [0.01]]
       ret.steerKf = 0.00006   # full torque for 10 deg at 80mph means 0.00007818594
       # TODO: Prius seem to have very laggy actuators. Understand if it is lag or hysteresis
-      ret.steerActuatorDelay = 0.25
+      ret.steerActuatorDelay = 0.125
 
     elif candidate in [CAR.RAV4, CAR.RAV4H]:
       stop_and_go = True if (candidate in CAR.RAV4H) else False
@@ -149,17 +149,18 @@ class CarInterface(object):
       ret.steerKf = 0.00006
 
     elif candidate == CAR.OLD_CAR:
-      stop_and_go = False
+      stop_and_go = True
       ret.safetyParam = 100 # see conversion factor for STEER_TORQUE_EPS in dbc file
-      ret.wheelbase = 2.70
-      ret.steerRatio = 17.8
+      ret.wheelbase = 2.455
+      ret.steerRatio = 20.
       tire_stiffness_factor = 0.444
-      ret.mass = 2860 * CV.LB_TO_KG + std_cargo  # mean between normal and hybrid
-      ret.steerKpV, ret.steerKiV = [[0.2], [0.05]]
-      ret.steerKf = 0.00003   # full torque for 20 deg at 80mph means 0.00007818594
+      ret.mass = 4690 * CV.LB_TO_KG + std_cargo  # mean between normal and hybrid
+      ret.steerKpV, ret.steerKiV = [[0.15], [0.03]]
+      ret.steerKf = 0.00006   # full torque for 20 deg at 80mph means 0.00007818594
+
 
     ret.steerRateCost = 1.
-    ret.centerToFront = ret.wheelbase * 0.44
+    ret.centerToFront = ret.wheelbase * 0.5
 
     ret.longPidDeadzoneBP = [0., 9.]
     ret.longPidDeadzoneV = [0., .15]
