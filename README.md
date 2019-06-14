@@ -21,25 +21,25 @@ Brain:
 
 
 Steering:
-* [EPS - electric power steering](#EPS)
-* [VSS - vehicle speed sensor](#supported-cars)
-* [Buttons](#community-maintained-cars)
-* [Cruise ECU](#supported-cars)
-* [Steering angle sensor](#steering)
+* [EPS - electric power steering](#eps)
+* [VSS - vehicle speed sensor](#vss)
+* [Buttons](#buttons)
+* [Cruise_ECU](#cruise_ecu)
+* [Steering angle sensor](#steering-angle-sensor)
 
 Throttle:
-* [Cruise Control Actuator](#in-progress-cars)
-* [Potentiometer](#directory-structure)
-* [Throttle ECU](#how-can-i-add-support-for-my-car)
+* [Cruise Control Actuator](#cruise-control-actuator)
+* [Potentiometer](#potentiometer)
+* [Throttle ECU](#throttle-ecu)
 
 Radar: 
-* [Radar sensor](#in-progress-cars)
+* [Radar sensor](#radar)
 
 Brake (not finished yet):
-* [ABS PUMP / OSCC Module](#user-data--chffr-account--crash-reporting)
+* [ABS PUMP / OSCC Module](#POLYSYNC-OSCC-Brake-module-and-Prius-Actuator)
 
 Community
- * [Community](#user-data--chffr-account--crash-reporting)
+ * [Community](#commutity)
 
 # BRAIN
 
@@ -59,7 +59,7 @@ I have used a cheap [OBD2 Wire Connector](https://www.amazon.com/iKKEGOL-Connect
 # STEERING
 
 
-## EPS - eclectic power steering
+## Eps
 
 We use a EPS (electronic power steering) out of a Toyota corolla 2018.
 This is already supported by Openpilot so we do not have to port it from sketch.
@@ -89,13 +89,13 @@ Unfortunately the ECU goes into failsafe, which means that it will disable LKAS.
 We will solve this issue later with our Cruise ECU.
 
 ----
-**VSS - vehicle speed sensor**
+## Vss
 
 Eon needs to know how fast we are driving. Therefore we need to add sensor which measure the speed of the car. Most cars already provide such a signal already. For example for the radio. If you have such a signal, you can grab that. In my case I have added a hall sensor to the rotary disc of the speedometer. This counts 4000 signal each km. With that sensor, we can calculate the speed in Cruise ECU and send it to EON via can. 
 
 
 ----
-**Buttons**
+## Buttons
 
 Since we do not have original toyota buttons, - guess what - we need to build it our selfs.
 Be creative, its quite simple. Pull-down buttons, which we will connect to  Cruise ECU later. 
@@ -105,7 +105,7 @@ Be creative, its quite simple. Pull-down buttons, which we will connect to  Crui
 ![enter image description here](https://i.imgur.com/LdcZqPN.jpg)
 
 ----
-**Cruise ECU**
+## Cruise_Ecu
 
 Cruise ECU is build out of an [Arduino Uno](https://www.amazon.com/Elegoo-EL-CB-001-ATmega328P-ATMEGA16U2-Arduino/dp/B01EWOE0UU/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=arduino%20uno&qid=1560514638&s=gateway&sr=8-2) with a [CAN bus shield](https://www.amazon.com/MakerFocus-CAN-Bus-Shield-V1-2/dp/B06XWQ4WF9/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=arduino%20uno%20canbus%20shield&qid=1560514663&s=gateway&sr=8-2) attached.
 ![enter image description here](https://i.imgur.com/CnysIXP.png)
@@ -130,7 +130,7 @@ Note: The LED stuff is optional. "Interrupt to throttle ecu" is an extra safety 
 
 
 ----
-**Steering angle sensor**
+## Steering Angle Sensor
 
 The steering angle sensor is the last missing piece. 
 I am using the sensor out of a toyota corolla / rav4.
@@ -151,7 +151,7 @@ I will defenetley upgrade to his sensor.
 
 # THROTTLE
 
-**Cruise Control Actuator**
+## Cruise Control Actuator
 
 Add an electric cruise control actuator to your throttle.
 Chose what ever brand you like. They are all very similar. 
@@ -184,7 +184,7 @@ Download [Throttle_ECU Code](https://github.com/Lukilink/Cruise_ECU).
 ---
 # RADAR
 
-**RADAR**
+## Radar
 
 
 ![enter image description here](https://i.imgur.com/0dD9zPy.png)
@@ -203,7 +203,7 @@ Make sure, to fingerprint after you have installed.
 Brake is not finished at the moment. Therefore I will not go to much in detail. 
 There are different options on that at the moment. 
 
-**POLYSYNC OSCC Brake module and Prius Actuator**
+## POLYSYNC OSCC Brake module and Prius Actuator
 
 ![enter image description here](https://i.imgur.com/fcA75LR.png)
 
