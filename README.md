@@ -64,7 +64,10 @@ This is already supported by Openpilot so we do not have to port it from sketch.
 This is the electric steering Column out of a corolla: 
 ![enter image description here](https://i.imgur.com/PUOQNph.png)
 
-It is really important, that is has LKAS (lane keep assistent). Therefore make sure to buy it from 2018 corolla. The steering column and motor might be the same like in older corollas. But the ECU is different. So make sure to buy the one with "KV" on the sticker:
+It is really important, that is has LKAS (lane keep assistent). Therefore make sure to buy it from 2018 corolla.
+The steering column and motor might be the same like in older corollas.
+But the ECU is different. So make sure to buy the one with "KV" on the sticker:
+
 ![enter image description here](https://i.imgur.com/Bl3FpBX.png)
 
 This is how to wire the steering ECU:
