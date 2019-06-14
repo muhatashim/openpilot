@@ -30,7 +30,7 @@ Steering:
 Throttle:
 * [Cruise Control Actuator](#cruise-control-actuator)
 * [Potentiometer](#potentiometer)
-* [Throttle ECU](#throttle-ecu)
+* [Throttle_ECU](#throttle_ecu)
 
 Radar: 
 * [Radar sensor](#radar)
@@ -159,11 +159,11 @@ It should have an electric motor in it, and something like a clutch.
 There is a solenoid in it, which disconnects everything mechanically. Pretty safe :) 
 If you already have stock cruise control in your car. Use that one! 
 
-**Potentiometer**
+## Potentiometer
 
 To measure the position of the throttle we use the stock potentiometer. Almost every throttle has a potentiometer attached. 
 
-**Throttle ECU**
+## Throttle_ECU
 
 Throttle ECU Hardware is an [Arduino Uno](https://www.amazon.com/Elegoo-EL-CB-001-ATmega328P-ATMEGA16U2-Arduino/dp/B01EWOE0UU/ref=sr_1_3?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=arduino%20uno&qid=1560516407&s=gateway&sr=8-3) with a [CAN-bus shield](https://www.amazon.com/MakerFocus-CAN-Bus-Shield-V1-2/dp/B06XWQ4WF9/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=arduino%20uno%20canbus%20shield&qid=1560514663&s=gateway&sr=8-2) and a [H-bridge](https://www.amazon.com/CJRSLRB-3Packs-Controller-H-Bridge-Arduino/dp/B07BMTQMKN/ref=sr_1_2_sspa?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=H-bridge&qid=1560516427&s=gateway&sr=8-2-spons&psc=1) attached.
 
@@ -218,7 +218,7 @@ I would appreciate if someone could help us with that.
 
 ---
 
-# COMMUITY
+# COMMUNITY
 
 Community is the most important thing in this project.
 
