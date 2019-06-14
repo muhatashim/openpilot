@@ -148,7 +148,7 @@ Fortunatley the sensor provides it's own ECU. Therefor it is like plug and play.
 ![enter image description here](https://i.imgur.com/CwXuUUv.jpg)
 	
 The stock Toyota sensor is laggy and not very precise. 
-Zorrobyte has started to build a high precision, fast like hell, sensor.
+Zorrobyte and Wocsor have started to build a high precision, fast like hell, sensor.
 It´s cheap and provides a stunning performance. Zorrobyte invented a super clever mounting position. 
 Check out his [Github](https://github.com/zorrobyte/betterToyotaAngleSensorForOP). 
 I will definetely upgrade to zorro_angle_sensor.
