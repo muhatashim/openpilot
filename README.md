@@ -76,16 +76,16 @@ This is how to wire the steering ECU:
 
 z11 and z7 connectors goes to the EPS Motor.
 
-Now its time to retrofit it in your car. Since every car is different, you need to be a little creative. 
-Im my case, I have cut my stock column in half and welded both ends to the corolla steering column.
-If you already have a hydraulic power steering, you might want to disable that. Otherwise you would have a Power steering on top of a power steering. 
+Since every car is different, you need to be a little creative when it comes to retrofitting. 
+Im my case, I have cut the stock column in half and welded both ends to the corolla steering column.
+If you already have a hydraulic power steering, you might want to disable that by shorting it. Otherwise you would have a power steering on top of a power steering. 
 This is how my conversion looks like: 
 
 ![enter image description here](https://i.imgur.com/TTxdILC.jpg)
 
 ![enter image description here](https://i.imgur.com/349kMvt.png)
 
-Now we have a working power steering in our car! 
+Now we have a working EPS! 
 Unfortunately the ECU goes into failsafe, which means that it will disable LKAS. 
 We will solve this issue later with our Cruise ECU.
 
