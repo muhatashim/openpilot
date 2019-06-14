@@ -17,7 +17,7 @@ OVERVIEW
 To make openpilot work in an old car, we neet to retrofit actuators from supported cars like toyota corolla 2018. Some small ECU needs to be build DIY.
 
 Brain:
-* [EON & PANDA](#EON-&-PANDA)
+* [EON & Pada](#EON-&-Panda)
 
 
 Steering:
@@ -43,7 +43,7 @@ Community
 
 # BRAIN
 
-**EON & PANDA**
+##EON & Panda
 
 ![enter image description here](https://i.imgur.com/RBqQvoZ.jpg)
 
@@ -59,17 +59,14 @@ I have used a cheap [OBD2 Wire Connector](https://www.amazon.com/iKKEGOL-Connect
 # STEERING
 
 
-**EPS - eclectic power steering**
+## EPS - eclectic power steering
 
 We use a EPS (electronic power steering) out of a Toyota corolla 2018.
 This is already supported by Openpilot so we do not have to port it from sketch.
 This is the electric steering Column out of a corolla: 
 ![enter image description here](https://i.imgur.com/PUOQNph.png)
 
-It is really important, that is has LKAS (lane keep assistent). Therefore make sure to buy it from 2018 corolla.
-The steering column and motor might be the same like in older corollas.
-But the ECU is different. So make sure to buy the one with "KV" on the sticker:
-
+It is really important, that is has LKAS (lane keep assistent). Therefore make sure to buy it from 2018 corolla. The steering column and motor might be the same like in older corollas. But the ECU is different. So make sure to buy the one with "KV" on the sticker:
 ![enter image description here](https://i.imgur.com/Bl3FpBX.png)
 
 This is how to wire the steering ECU:
@@ -78,16 +75,16 @@ This is how to wire the steering ECU:
 
 z11 and z7 connectors goes to the EPS Motor.
 
-Since every car is different, you need to be a little creative when it comes to retrofitting. 
-Im my case, I have cut the stock column in half and welded both ends to the corolla steering column.
-If you already have a hydraulic power steering, you might want to disable that by shorting it. Otherwise you would have a power steering on top of a power steering. 
+Now its time to retrofit it in your car. Since every car is different, you need to be a little creative. 
+Im my case, I have cut my stock column in half and welded both ends to the corolla steering column.
+If you already have a hydraulic power steering, you might want to disable that. Otherwise you would have a Power steering on top of a power steering. 
 This is how my conversion looks like: 
 
 ![enter image description here](https://i.imgur.com/TTxdILC.jpg)
 
 ![enter image description here](https://i.imgur.com/349kMvt.png)
 
-Now we have a working EPS! 
+Now we have a working power steering in our car! 
 Unfortunately the ECU goes into failsafe, which means that it will disable LKAS. 
 We will solve this issue later with our Cruise ECU.
 
