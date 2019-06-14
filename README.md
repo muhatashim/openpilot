@@ -5,7 +5,7 @@ Welcome to openpilot OLD_CARS_BRANCH
 
 [openpilot](http://github.com/commaai/openpilot) is an open source driving agent. Currently, it performs the functions of Adaptive Cruise Control (ACC) and Lane Keeping Assist System (LKAS).  It's about on par with Tesla Autopilot and GM Super Cruise, and better than [all other manufacturers](http://www.thedrive.com/tech/5707/the-war-for-autonomous-driving-part-iii-us-vs-germany-vs-japan).
 
-This OLD_CAR Branch bings openpilot to almost every car. Follow this readme to get an overview how it works.
+This OLD_CAR Branch brings openpilot to almost every car. Follow this readme to get an overview how it works.
 
 Big thank you goes to @wocsor. He developed the whole thing and modified the code.
 
@@ -14,7 +14,7 @@ The openpilot codebase has been written to be concise and to enable rapid protot
 OVERVIEW
 =======================
 
-To make openpilot work in an old car, we neet to retrofit actuators from supported cars like toyota corolla 2018. Some small ECU needs to be build DIY.
+To make openpilot work in an old car, we need to retrofit actuators from supported cars like toyota corolla 2018. Some small ECU needs to be build DIY.
 
 Brain:
 * [EON and Pada](#eon-and-panda)
@@ -48,10 +48,10 @@ Community
 ![enter image description here](https://i.imgur.com/RBqQvoZ.jpg)
 
 First, we need a brain to control everything. 
-This is EON. An extremely powerful piece of hardware which runs openpitlot. 
-We also need Panda, which connects EON to the OBD2 port of the car. So that eon can talk to the car via CAN bus. 
-Oh wait! - we do not have a CAN Bus network in our car. Don't worry we will build it DIY.
-For more informations to EON or PANDA visite [comma.ai.](https://comma.ai)
+This is EON. An extremely powerful piece of hardware which runs openpilot. 
+We also need Panda, which connects EON to the OBD2 port of the car. So that EON can talk to the car via CAN-Bus. 
+Oh wait! - we do not have a CAN-Bus network in our car. Don't worry we will build it DIY.
+For more informations to EON or PANDA visit [comma.ai.](https://comma.ai)
 
 I have used a cheap [OBD2 wire connector](https://www.amazon.com/iKKEGOL-Connector-Diagnostic-Extension-Pigtail/dp/B07F16HC12/ref=sr_1_15?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=obd2%20cable&qid=1560506720&s=gateway&sr=8-15) to pinout the panda. 
 
@@ -75,7 +75,7 @@ This is how to wire the steering ECU:
 
 z11 and z7 connectors will be connected to the EPS Motor.
 
-Now its time to retrofit the steering column. Since every car is different, you need to be a little creative. 
+Now it's time to retrofit the steering column. Since every car is slightly different, you need to be a little creative. 
 Im my case, I have cut my stock column in half and welded both ends to the corolla steering column.
 If you already have a hydraulic power steering, you might want to disable that. Otherwise you would have a power steering on top of a power steering, and your steering wheel will never return to center by itself.
 
@@ -92,14 +92,14 @@ Cruise_ECU will take care of this issue.
 ----
 ## Vss
 
-Eon needs to know how fast we are driving. Therefore we need to add a sensor which measure the "speed" of the car. Most cars already provide such a signal already. For example for the radio. If you have such a signal, you can grab that. In my case I have added a hall sensor to the rotary disc of the speedometer. This counts 4000 signal each km. Cruis_Ecu will calculate that signal with some math. NOTE: you need to set the "counts per km" of your specific sensor in Cruise_ECU.
+Eon needs to know how fast we are driving. Therefore we need to add a sensor which measure the "speed" of the car. Most cars already provide such a signal already. For example for the radio. If you have such a signal, you can grab that. In my case I have added a hall sensor to the rotary disc of the speedometer. This counts 4000 signal each km. Cruis_Ecu will calculate that signal with some math. NOTE: you need to adjust the "counts per km" of your specific sensor in Cruise_ECU code.
 
 
 ----
 ## Buttons
 
-Since we do not have original toyota buttons, - guess what - we need to build it our selfs.
-Be creative, it is simple task. Pull-down buttons, which will be connected to Cruise_ECU later.
+Since we do not have original toyota buttons, - guess what - we need to build it ourself.
+Be creative, it is simple task. Pull-down buttons, which will be connected to Cruise_ECU.
 
 ![enter image description here](https://i.imgur.com/V3gqlWY.png)
 
@@ -117,12 +117,12 @@ It handles the following functions:
  1. Cruise_ECU sends some CAN messages on the bus, which let the EPS thinks that it is still in a corolla.
  The EPS is happy and does not go into failsafe. LKAS is ready to take control of it !!! 
  
- 2. Cruise_ECU calculates the current speed by reading the VSS. It sends a 0xb4 and 0xaa message on the can bus. EON and Throttle_ECU can read and use those messages.
+ 2. Cruise_ECU calculates the current speed by reading the VSS. It sends a 0xb4 and 0xaa message on the CAN-Bus. EON and Throttle_ECU can read and use those messages.
  
- 3. Cruise_ECU digitalReads the Buttons and sends the associated Can messages to the bus. It lets us enable and disable
+ 3. Cruise_ECU digitalReads the buttons and sends the associated CAN messages to the bus. It let's us enable and disable
  Openpilot. We can also increase or decrease the set speed.
  
- 5. It provides some safety function. It will disable immediately, if it looses CAN seafty checksum.
+ 5. It provides some safety function. It will disable immediately, if it looses CAN safety checksum.
  
  This is how you wire Cruise_ECU: 
 ![CRUISE_ECU_PINOUT](https://i.imgur.com/9Mnr5qg.jpg)
@@ -130,7 +130,7 @@ It handles the following functions:
 Note: The LED stuff is optional. "Interrupt to Throttle_ecu" is an extra safety feature, not necessary but recommended.
 
 Attach a switch to the brake pedal and wire it to D7 (button_cancel). Openpilot will disengage when pressing the brake pedal.
-If you have a manual transmition, do the same for clutsh pedal.
+If you have a manual transmition, do the same for clutch pedal.
 
 [Download Cruise ECU Code.](https://github.com/Lukilink/Cruise_ECU)
 
@@ -140,18 +140,18 @@ If you have a manual transmition, do the same for clutsh pedal.
 
 I am using the stock steering angle sensor out of a toyota corolla / rav4.
 I highly recommend buying it with the hair spring attached. Also we do not need the hair spring, it takes care of the sensor while shipping.
-Fortunatley the sensor provides it's own ECU. Therefor it is like plug and pay. 
+Fortunatley the sensor provides it's own ECU. Therefor it is like plug and play. 
 
 ![enter image description here](https://i.imgur.com/8hsyrax.png)
 
 
 ![enter image description here](https://i.imgur.com/CwXuUUv.jpg)
 	
-The stock Toyota sensor is laggy and not verry precise. 
+The stock Toyota sensor is laggy and not very precise. 
 Zorrobyte has started to build a high precision, fast like hell, sensor.
 It´s cheap and provides a stunning performance. Zorrobyte invented a super clever mounting position. 
 Check out his [Github](https://github.com/zorrobyte/betterToyotaAngleSensorForOP). 
-I will defenetley upgrade to zorro_angle_sensor.
+I will definetely upgrade to zorro_angle_sensor.
 
 ---
 
@@ -160,16 +160,16 @@ I will defenetley upgrade to zorro_angle_sensor.
 ## Cruise Control Actuator
 
 Add an electric cruise control actuator to your throttle.
-Chose what ever brand you like. They are all very similar and it is easy to get one cheap out of a 90th car on ebay. 
+Choose what ever brand you like. They are all very similar and it is easy to get one cheap out of a 90th car on ebay. 
 It needs to have an electric motor, and something similar to a clutch.
-The "cutch" is basicaly a solenoid, which disconnects everything mechanically. Pretty nice safety feature :) 
+The "clutch" is basically a solenoid, which disconnects everything mechanically. Pretty nice safety feature :) 
 If you already have stock cruise control in your car, take that one!
 
 
 ## Potentiometer
 
 To measure the position of the throttle we use the stock potentiometer. Almost every throttle has a potentiometer attached.
-We are reding that amount in our Throttle_ECU. 
+We read that amount in Throttle_ECU. 
 
 Note: Throttle_ECU sketch must be adjusted for your specific potentiometer. Therefore you need to "measure" the min and max value of your potentiometer with analog_read_to_serial. If you have your min and max values you can set those in Throttle_ECU sketch.
 
@@ -183,9 +183,9 @@ It handles the following functions:
 
  1. Throttle_ECU receives the angle_requests from EON and runs the cruise actuator motor and solenoid.
  
- 2. It calculates the acceleration amount depending on the current speed. That means it accelerate faster when driving fast, and more smooth and carefully when driving slow. 
+ 2. It calculates the acceleration amount depending on the current speed. That means it accelerates faster when driving fast, and more smooth and carefully when driving slow. 
  
- 4. It provide some safety function. It will disengage immediately, if it looses can safety message on the bus. 
+ 4. It provides some safety function. It will disengage immediately, if it looses CAN-safety messages. 
 
 Download [Throttle_ECU Code](https://github.com/Lukilink/Cruise_ECU).
 
@@ -210,13 +210,13 @@ You may need to fingerprint after you have installed the radar.
 
 # BRAKE
 
-Brake is not finished now. Therefore I will not go to much in detail. 
+Brake is not finished yet. Therefore I will not go to much in detail. 
 
 ## POLYSYNC OSCC Brake module and Prius Actuator
 
 ![enter image description here](https://i.imgur.com/fcA75LR.png)
 
-[Polysync /oscc](https://github.com/PolySync/oscc)  build a board with an Arduino mega attahced to control a toyota prius ABS actuator. 
+[Polysync /oscc](https://github.com/PolySync/oscc)  build a board with an Arduino mega attached to control a toyota prius ABS actuator. 
 
 This actuator will be placed on top of the stock brake system.
 
