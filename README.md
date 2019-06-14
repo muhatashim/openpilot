@@ -17,7 +17,7 @@ OVERVIEW
 To make openpilot work in an old car, we neet to retrofit actuators from supported cars like toyota corolla 2018. Some small ECU needs to be build DIY.
 
 Brain:
-* [EON and Pada](##-EON)
+* [EON and Pada](#-EON)
 
 
 Steering:
@@ -43,7 +43,7 @@ Community
 
 # BRAIN
 
-## EON
+# EON
 
 ![enter image description here](https://i.imgur.com/RBqQvoZ.jpg)
 
