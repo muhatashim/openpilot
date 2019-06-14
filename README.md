@@ -25,7 +25,7 @@ Steering:
 * [VSS - vehicle speed sensor](#supported-cars)
 * [Buttons](#community-maintained-cars)
 * [Cruise ECU](#supported-cars)
-* [Steering angle sensor](#-steering)
+* [Steering angle sensor](#steering)
 
 Throttle:
 * [Cruise Control Actuator](#in-progress-cars)
