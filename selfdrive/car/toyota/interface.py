@@ -39,6 +39,8 @@ class CarInterface(object):
 
   @staticmethod
   def calc_accel_override(a_ego, a_target, v_ego, v_target):
+    if v_ego <= 8.9:
+      return 0
     return 1.0
 
   @staticmethod
@@ -110,7 +112,7 @@ class CarInterface(object):
       ret.lateralTuning.lqr.dcGain = 0.002237852961363602
 
     elif candidate == CAR.COROLLA:
-      stop_and_go = False
+      stop_and_go = True
       ret.safetyParam = 100
       ret.wheelbase = 2.70
       ret.steerRatio = 18.27
@@ -402,9 +404,8 @@ class CarInterface(object):
     elif not ret.cruiseState.enabled:
       events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
 
-    # disable on pedals rising edge or when brake is pressed and speed isn't zero
-    if (ret.gasPressed and not self.gas_pressed_prev) or \
-       (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
+    # disable on pedals only when brake is pressed and speed isn't zero
+    if ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001):
       events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
 
     if ret.gasPressed:
