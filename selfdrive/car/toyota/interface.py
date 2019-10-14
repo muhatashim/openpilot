@@ -40,8 +40,6 @@ class CarInterface(CarInterfaceBase):
 
   @staticmethod
   def calc_accel_override(a_ego, a_target, v_ego, v_target):
-    if v_ego <= 8.9:
-      return 0
     return 1.0
 
   @staticmethod
