@@ -397,9 +397,6 @@ class CarInterface(CarInterfaceBase):
     #   events.append(create_event('lowSpeedLockout', [ET.NO_ENTRY, ET.PERMANENT]))
     if ret.vEgo < self.CP.minEnableSpeed and self.CP.enableDsu:
       # events.append(create_event('speedTooLow', [ET.NO_ENTRY]))
-      if c.actuators.gas > 0.1:
-        # some margin on the actuator to not false trigger cancellation while stopping
-        events.append(create_event('speedTooLow', [ET.IMMEDIATE_DISABLE]))
       if ret.vEgo < 0.001:
         # while in standstill, send a user alert
         events.append(create_event('manualRestart', [ET.WARNING]))
