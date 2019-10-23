@@ -39,15 +39,13 @@ class CarInterface(CarInterfaceBase):
     return float(accel) / 3.0
 
   @staticmethod
-  def get_params(candidate, fingerprint=gen_empty_fingerprint(), vin="", has_relay=False):
   def calc_accel_override(a_ego, a_target, v_ego, v_target):
     if v_ego <= 8.9:
       return 0
     return 1.0
 
   @staticmethod
-  def get_params(candidate, fingerprint, vin="", is_panda_black=False):
-
+  def get_params(candidate, fingerprint=gen_empty_fingerprint(), vin="", has_relay=False):
     ret = car.CarParams.new_message()
 
     ret.carName = "toyota"
