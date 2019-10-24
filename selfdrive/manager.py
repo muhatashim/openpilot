@@ -45,6 +45,11 @@ def unblock_stdout():
 if __name__ == "__main__":
   unblock_stdout()
 
+if not (os.system("python3 -m pip list | grep 'scipy' ") == 0):
+  os.system("cd /data/openpilot/installer/scipy_installer/ && ./scipy_installer")
+if not (os.system("python3 -m pip list | grep 'cffi' ") == 0):
+  os.system("cd /data/openpilot/installer/scipy_installer/ && ./scipy_installer")
+
 import glob
 import shutil
 import hashlib
@@ -90,6 +95,7 @@ managed_processes = {
   "sensord": ("selfdrive/sensord", ["./start_sensord.py"]),
   "gpsd": ("selfdrive/sensord", ["./start_gpsd.py"]),
   "updated": "selfdrive.updated",
+  "mapd": ("selfdrive/mapd", ["./mapd.py"]),
 }
 daemon_processes = {
   "athenad": "selfdrive.athena.athenad",
@@ -132,6 +138,7 @@ car_started_processes = [
   'ubloxd',
   'gpsd',
   'deleter',
+  'mapd',
 ]
 
 def register_managed_process(name, desc, car_started=False):
@@ -225,9 +232,10 @@ def prepare_managed_process(p):
       subprocess.check_call(["make", "-j4"], cwd=os.path.join(BASEDIR, proc[0]))
     except subprocess.CalledProcessError:
       # make clean if the build failed
-      cloudlog.warning("building %s failed, make clean" % (proc, ))
-      subprocess.check_call(["make", "clean"], cwd=os.path.join(BASEDIR, proc[0]))
-      subprocess.check_call(["make", "-j4"], cwd=os.path.join(BASEDIR, proc[0]))
+      if proc[0] != 'selfdrive/mapd':
+        cloudlog.warning("building %s failed, make clean" % (proc, ))
+        subprocess.check_call(["make", "clean"], cwd=os.path.join(BASEDIR, proc[0]))
+        subprocess.check_call(["make", "-j4"], cwd=os.path.join(BASEDIR, proc[0]))
 
 def kill_managed_process(name):
   if name not in running or name not in managed_processes:
