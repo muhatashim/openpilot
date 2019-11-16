@@ -38,8 +38,6 @@ class CarInterface(CarInterfaceBase):
 
   @staticmethod
   def calc_accel_override(a_ego, a_target, v_ego, v_target):
-    if v_ego <= 8.9:
-      return 0
     return 1.0
 
   @staticmethod
@@ -114,7 +112,7 @@ class CarInterface(CarInterfaceBase):
       stop_and_go = True
       ret.safetyParam = 100
       ret.wheelbase = 2.70
-      ret.steerRatio = 18.27
+      ret.steerRatio = 17.8
       tire_stiffness_factor = 0.444  # not optimized yet
       ret.mass = 2860. * CV.LB_TO_KG + STD_CARGO_KG  # mean between normal and hybrid
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.2], [0.05]]
@@ -392,12 +390,9 @@ class CarInterface(CarInterfaceBase):
     if self.CS.steer_error:
       events.append(create_event('steerTempUnavailable', [ET.NO_ENTRY, ET.WARNING]))
     # if self.CS.low_speed_lockout and self.CP.enableDsu:
-    #   events.append(create_event('lowSpeedLockout', [ET.NO_ENTRY, ET.PERMANENT]))
+    #   events.append(create_event('lowSpeedLockout', [ET.NO_ENTRY, ET.PERMANENT])) q
     if ret.vEgo < self.CP.minEnableSpeed and self.CP.enableDsu:
       # events.append(create_event('speedTooLow', [ET.NO_ENTRY]))
-      if c.actuators.gas > 0.1:
-        # some margin on the actuator to not false trigger cancellation while stopping
-        events.append(create_event('speedTooLow', [ET.IMMEDIATE_DISABLE]))
       if ret.vEgo < 0.001:
         # while in standstill, send a user alert
         events.append(create_event('manualRestart', [ET.WARNING]))
@@ -412,8 +407,8 @@ class CarInterface(CarInterfaceBase):
     if ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001):
       events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
 
-    if ret.gasPressed:
-      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+    # if ret.gasPressed:
+    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
 
     ret.events = events
 
