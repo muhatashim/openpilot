@@ -200,8 +200,8 @@ class CarInterface(CarInterfaceBase):
       ret.steerRatio = 16.0
       tire_stiffness_factor = 0.444
       ret.mass = 4590. * CV.LB_TO_KG + STD_CARGO_KG
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.3], [0.05]]
-      ret.lateralTuning.pid.kf = 0.00007818594
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.08], [0.015]]
+      ret.lateralTuning.pid.kf = 0.00004
 
     elif candidate == CAR.LEXUS_IS:
       stop_and_go = False
@@ -276,8 +276,8 @@ class CarInterface(CarInterfaceBase):
       ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
       ret.longitudinalTuning.kiV = [0.18, 0.12]
     else:
-      ret.gasMaxBP = [0.]
-      ret.gasMaxV = [0.5]
+      ret.gasMaxBP = [0., 20, 80]
+      ret.gasMaxV = [0.5, 0.25, 0.18]
       ret.longitudinalTuning.kpV = [3.6, 2.4, 1.5]
       ret.longitudinalTuning.kiV = [0.54, 0.36]
 
