@@ -1469,7 +1469,6 @@ static const char __pyx_k_Offroad_IsTakingSnapshot[] = "Offroad_IsTakingSnapshot
 static const char __pyx_k_put_nonblocking_locals_f[] = "put_nonblocking.<locals>.f";
 static const char __pyx_k_Offroad_ConnectivityNeeded[] = "Offroad_ConnectivityNeeded";
 static const char __pyx_k_Offroad_TemperatureTooHigh[] = "Offroad_TemperatureTooHigh";
-static const char __pyx_k_Offroad_HardwareUnsupported[] = "Offroad_HardwareUnsupported";
 static const char __pyx_k_Offroad_PandaFirmwareMismatch[] = "Offroad_PandaFirmwareMismatch";
 static const char __pyx_k_Offroad_ConnectivityNeededPrompt[] = "Offroad_ConnectivityNeededPrompt";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
@@ -1510,7 +1509,6 @@ static PyObject *__pyx_n_b_LiveParameters;
 static PyObject *__pyx_n_b_Offroad_ChargeDisabled;
 static PyObject *__pyx_n_b_Offroad_ConnectivityNeeded;
 static PyObject *__pyx_n_b_Offroad_ConnectivityNeededPrompt;
-static PyObject *__pyx_n_b_Offroad_HardwareUnsupported;
 static PyObject *__pyx_n_b_Offroad_InvalidTime;
 static PyObject *__pyx_n_b_Offroad_IsTakingSnapshot;
 static PyObject *__pyx_n_b_Offroad_NeosUpdate;
@@ -4228,7 +4226,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_b_Offroad_ChargeDisabled, __pyx_k_Offroad_ChargeDisabled, sizeof(__pyx_k_Offroad_ChargeDisabled), 0, 0, 0, 1},
   {&__pyx_n_b_Offroad_ConnectivityNeeded, __pyx_k_Offroad_ConnectivityNeeded, sizeof(__pyx_k_Offroad_ConnectivityNeeded), 0, 0, 0, 1},
   {&__pyx_n_b_Offroad_ConnectivityNeededPrompt, __pyx_k_Offroad_ConnectivityNeededPrompt, sizeof(__pyx_k_Offroad_ConnectivityNeededPrompt), 0, 0, 0, 1},
-  {&__pyx_n_b_Offroad_HardwareUnsupported, __pyx_k_Offroad_HardwareUnsupported, sizeof(__pyx_k_Offroad_HardwareUnsupported), 0, 0, 0, 1},
   {&__pyx_n_b_Offroad_InvalidTime, __pyx_k_Offroad_InvalidTime, sizeof(__pyx_k_Offroad_InvalidTime), 0, 0, 0, 1},
   {&__pyx_n_b_Offroad_IsTakingSnapshot, __pyx_k_Offroad_IsTakingSnapshot, sizeof(__pyx_k_Offroad_IsTakingSnapshot), 0, 0, 0, 1},
   {&__pyx_n_b_Offroad_NeosUpdate, __pyx_k_Offroad_NeosUpdate, sizeof(__pyx_k_Offroad_NeosUpdate), 0, 0, 0, 1},
@@ -5710,8 +5707,6 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_1);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_b_Offroad_HardwareUnsupported, __pyx_t_4) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_keys, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
